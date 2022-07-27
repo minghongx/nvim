@@ -10,7 +10,7 @@ https://github.com/nvim-telescope/telescope.nvim/issues/1470
 
 require('plugins.telescope.key-mappings')
 require('telescope').setup {
- 
+
   defaults = {
     mappings = {
       n = {
@@ -22,7 +22,7 @@ require('telescope').setup {
     },
     sorting_strategy = 'ascending',
   },
- 
+
   pickers = {
 
     builtin = {
@@ -44,7 +44,7 @@ require('telescope').setup {
     },
 
     buffers = {
-      initial_mode = 'normal', 
+      initial_mode = 'normal',
     },
 
   },
