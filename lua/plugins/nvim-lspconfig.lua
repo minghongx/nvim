@@ -1,6 +1,6 @@
-local servers = { 'sumneko_lua', 'pyright', 'hls', }
-
 local lspconfig = require('lspconfig')
+
+local servers = { 'sumneko_lua', 'pyright', 'hls', }
 
 local on_attach = function(client, bufnr)
   -- this code gets executed when a language server is attached to a buffer
@@ -19,7 +19,15 @@ for _, server in ipairs(servers) do
   }
 end
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
+
+--[[
+
+vim.lsp.buf.formatting does not respect indentation settings in .editorconfig or defaultConfig
+https://github.com/sumneko/lua-language-server/issues/1068
+
+https://github.com/CppCXY/EmmyLuaCodeStyle sumneko_lua depends on is poorly designed
+
+--]]
 lspconfig.sumneko_lua.setup {
   settings = {
     Lua = {
