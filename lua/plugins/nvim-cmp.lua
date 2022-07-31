@@ -33,7 +33,7 @@ cmp.setup {
       mode = 'symbol_text',
       menu = {
         buffer   = '[buf]',
-	path     = '[path]',
+        path     = '[path]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[API]',
         luasnip  = '[snip]',
