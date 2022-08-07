@@ -9,6 +9,13 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
   }
 
   use {
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    config = function()
+      require('lsp_lines').setup()
+    end,
+  }
+
+  use {
     'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lua',
@@ -27,6 +34,8 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
  --    BurntSushi/ripgrep is required for live_grep and grep_string
  --    sharkdp/fd
   }
+
+  use { 'lewis6991/gitsigns.nvim', tag = 'release' }
 
   use 'lervag/vimtex'
 
