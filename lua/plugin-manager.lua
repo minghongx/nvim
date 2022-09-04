@@ -32,6 +32,11 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
 
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
 
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+  }
+
   use 'lervag/vimtex'
 
   -- Themes
