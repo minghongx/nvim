@@ -12,3 +12,12 @@ opt.number = true -- But show the actual number for the line the cursor is on
 opt.scrolloff = 10 -- Lines below the cursor
 opt.breakindent = true
 
+opt.list = true
+opt.listchars = {
+  eol = '¬',
+  trail = '∙',
+  tab = '>-',
+  precedes = '❮',
+  extends = '❯',
+}
+
