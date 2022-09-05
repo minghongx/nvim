@@ -22,9 +22,13 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
+  use {
     { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = 'nvim-lua/plenary.nvim' },
     { 'kyazdani42/nvim-web-devicons' },
- -- { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
  -- { 'nvim-telescope/telescope-file-browser.nvim' },
  --    BurntSushi/ripgrep is required for live_grep and grep_string
  --    sharkdp/fd
