@@ -7,11 +7,17 @@ require 'plugins.mason'
 require 'plugins.mason-lspconfig'
 require 'plugins.lspconfig'
 
-require 'plugins.lsp_lines'
 require 'plugins.cmp'
-require 'plugins.treesitter'
+require 'plugins.dap'
 require 'plugins.telescope'
-require 'plugins.gitsigns'
 require 'plugins.hop'
-require 'plugins.vimtex'
+
+-- Appearance
+require 'plugins.treesitter'
+require 'plugins.gitsigns'
+require 'plugins.lsp_lines'
 require 'plugins.themes.gruvbox'
+
+-- Language specific
+require 'plugins.vimtex'
+

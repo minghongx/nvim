@@ -34,6 +34,14 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
  --    sharkdp/fd
   }
 
+  use {
+    'mfussenegger/nvim-dap',
+    -- UI/UX extensions
+    'theHamsta/nvim-dap-virtual-text',
+    'rcarriga/nvim-dap-ui',
+    'nvim-telescope/telescope-dap.nvim',
+  }
+
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
 
   use {

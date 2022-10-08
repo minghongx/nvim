@@ -59,6 +59,8 @@ require('telescope').setup {
 }
 
 
+require('telescope').load_extension('dap') -- integration for nvim-dap with telescope.nvim
+
 
 local M = {}
 
