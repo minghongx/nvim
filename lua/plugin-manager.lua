@@ -42,7 +42,10 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
     'nvim-telescope/telescope-dap.nvim',
   }
 
-  use { 'lewis6991/gitsigns.nvim', tag = 'release' }
+  use {
+    'lewis6991/gitsigns.nvim',
+    branch = 'main'
+  }
 
   use {
     'phaazon/hop.nvim',
