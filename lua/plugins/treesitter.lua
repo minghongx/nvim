@@ -17,6 +17,7 @@ require('nvim-treesitter.configs').setup {
     'toml',
     'bash',
     'fish',
+    'verilog',
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
