@@ -10,5 +10,5 @@ map('n', 'w', function()
 end, {remap=true})
 
 map('', 'f', function()
-  hop.hint_char2 {}
+  hop.hint_char1 { current_line_only = true }
 end, {remap=true})
