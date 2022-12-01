@@ -2,13 +2,12 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
 
   use 'wbthomason/packer.nvim' -- package manager
 
-  use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig', -- configurations for nvim LSP
-  }
+  use 'williamboman/mason.nvim'
 
-  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+  use {
+    'neovim/nvim-lspconfig', -- configurations for nvim LSP
+    'williamboman/mason-lspconfig.nvim',
+  }
 
   use {
     'hrsh7th/nvim-cmp',
@@ -27,14 +26,6 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
   }
 
   use {
-    { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = 'nvim-lua/plenary.nvim' },
-      'kyazdani42/nvim-web-devicons',
- --   'nvim-telescope/telescope-file-browser.nvim',
- --    BurntSushi/ripgrep is required for live_grep and grep_string
- --    sharkdp/fd
-  }
-
-  use {
     'mfussenegger/nvim-dap',
     -- UI/UX extensions
     'theHamsta/nvim-dap-virtual-text',
@@ -43,8 +34,11 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
   }
 
   use {
-    'lewis6991/gitsigns.nvim',
-    branch = 'main'
+    { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = 'nvim-lua/plenary.nvim' },
+      'kyazdani42/nvim-web-devicons',
+ --   'nvim-telescope/telescope-file-browser.nvim',
+ --    BurntSushi/ripgrep is required for live_grep and grep_string
+ --    sharkdp/fd
   }
 
   use {
@@ -53,6 +47,13 @@ return require('packer').startup(function(use) -- https://github.com/wbthomason/
   }
 
   use 'lervag/vimtex'
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    branch = 'main'
+  }
+
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
   -- Themes
   use {
