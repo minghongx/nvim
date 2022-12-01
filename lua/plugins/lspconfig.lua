@@ -3,7 +3,7 @@ local lspconfig = require('lspconfig')
 local servers = {
   'sumneko_lua',
   'pyright',
-  'ccls',
+  'ccls', -- https://github.com/MaskRay/ccls/wiki/Project-Setup
   'texlab',
 }
 
