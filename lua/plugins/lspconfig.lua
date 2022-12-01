@@ -1,6 +1,11 @@
 local lspconfig = require('lspconfig')
 
-local servers = { 'sumneko_lua', 'pyright', 'texlab', }
+local servers = {
+  'sumneko_lua',
+  'pyright',
+  'ccls',
+  'texlab',
+}
 
 local on_attach = function(client, bufnr)
   -- this code gets executed when a language server is attached to a buffer
