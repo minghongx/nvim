@@ -11,7 +11,9 @@ require('gruvbox').setup {
   inverse = true, -- invert background for search, diffs, statuslines and errors
   contrast = 'soft', -- can be 'hard', 'soft' or empty string
   overrides = {},
+  dim_inactive = false,
+  transparent_mode = true,
 }
-vim.o.background = 'light' -- or 'dark'
+vim.o.background = 'dark' -- or 'light'
 
 vim.cmd('colorscheme gruvbox')
