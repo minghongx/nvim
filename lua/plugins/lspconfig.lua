@@ -1,10 +1,9 @@
 local lspconfig = require('lspconfig')
 
 local servers = {
-  'sumneko_lua',
+  'lua_ls',
   'pyright',
   'ccls', -- https://github.com/MaskRay/ccls/wiki/Project-Setup
-  'texlab',
 }
 
 local on_attach = function(client, bufnr)
@@ -32,7 +31,7 @@ https://github.com/sumneko/lua-language-server/issues/1068
 https://github.com/CppCXY/EmmyLuaCodeStyle sumneko_lua depends on is poorly designed
 
 --]]
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
