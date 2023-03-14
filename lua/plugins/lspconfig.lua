@@ -24,12 +24,12 @@ end
 
 
 --[[
-
 vim.lsp.buf.formatting does not respect indentation settings in .editorconfig or defaultConfig
 https://github.com/sumneko/lua-language-server/issues/1068
 
 https://github.com/CppCXY/EmmyLuaCodeStyle sumneko_lua depends on is poorly designed
 
+https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 --]]
 lspconfig.lua_ls.setup {
   settings = {
