@@ -1,17 +1,17 @@
-require 'plugin-manager'
-require 'core.key-mappings'
-require 'core.options'
+-- Bootstrap the Lazy plugin manager
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-require 'plugins.mason'
-require 'plugins.lspconfig' -- Set up lspconfig after mason
-
-require 'plugins.cmp'
-require 'plugins.dap'
-require 'plugins.telescope'
-require 'plugins.hop'
-
--- Appearance
-require 'plugins.treesitter'
-require 'plugins.gitsigns'
-require 'plugins.lsp_lines'
-require 'plugins.themes.gruvbox'
+require('core/keymaps')
+require('core/options')
+require('lazy').setup('plugins')

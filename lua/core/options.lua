@@ -1,23 +1,6 @@
---[[
+-- Show relative line numbers and the actual number of the line with the cursor
+vim.wo.rnu = true; vim.wo.nu = true
 
-WARNING: This (0.8) would be a good time to eliminate vim.opt then. We only need vim.o.
-https://github.com/neovim/neovim/pull/19477#issuecomment-1194040328
+vim.o.list = true; vim.o.lcs = 'eol:¬,trail:·,tab:»·,precedes:❮,extends:❯'
 
---]]
-
-local opt = vim.opt
-
-opt.relativenumber = true -- Show line numbers
-opt.number = true -- But show the actual number for the line the cursor is on
-opt.scrolloff = 10 -- Lines below the cursor
-opt.breakindent = true
-
-opt.list = true
-opt.listchars = {
-  eol = '¬',
-  trail = '∙',
-  tab = '>-',
-  precedes = '❮',
-  extends = '❯',
-}
-
+vim.o.breakindent = true
