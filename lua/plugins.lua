@@ -11,11 +11,14 @@ return {
       },
     },
   },
+
   -- TODO: which-key
   -- TODO: LSP
   -- TODO: nvim-cmp
-  -- TODO: Git: gitsigns, vim-fugitive + vim-rhubarb?
   -- TODO: telescope
+  -- TODO: Git: gitsigns, neogit, vim-fugitive + vim-rhubarb?, or
+  --       https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
+  --       https://github.com/voldikss/vim-floaterm#lazygit
 
   {
     'numToStr/Comment.nvim',
