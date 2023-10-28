@@ -29,7 +29,7 @@ return {
     end,
     opts = {
       -- :help which-key-config
-    }
+    },
   },
 
   {
@@ -57,11 +57,12 @@ return {
       -- reddit.com/r/neovim/comments/130kz2x/leap_users_do_you_actually_use_xx/
       vim.keymap.del({ 'x', 'o' }, 'x')
       vim.keymap.del({ 'x', 'o' }, 'X')
-    end
+    end,
   },
 
   {
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'VeryLazy',
     opts = {
       options = {
@@ -90,7 +91,7 @@ return {
         highlight = { enable = true },
         indent = { enable = true },  
       })
-    end
+    end,
   },
 
   'tpope/vim-sleuth', -- automatically adjusts 'shiftwidth' and 'expandtab'
