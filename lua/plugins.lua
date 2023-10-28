@@ -1,3 +1,8 @@
+-- TODO: telescope
+-- TODO: Git: gitsigns, neogit, vim-fugitive + vim-rhubarb?, or
+--       https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
+--       https://github.com/voldikss/vim-floaterm#lazygit
+
 return {
   {
     'williamboman/mason.nvim',
@@ -15,14 +20,106 @@ return {
     },
   },
 
-  -- TODO: LSP
-  -- TODO: nvim-cmp
-  -- TODO: telescope
-  -- TODO: Git: gitsigns, neogit, vim-fugitive + vim-rhubarb?, or
-  --       https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
-  --       https://github.com/voldikss/vim-floaterm#lazygit
+  {
+    'neovim/nvim-lspconfig',
+    -- TODO: Lazy load
+    dependencies = {
+      'mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      { 'folke/neodev.nvim', opts = {} },
+    },
+    config = function()
+      local servers = {
+        lua_ls = {
+          Lua = {
+            workspace = { checkThirdParty = false }
+          }
+        },
+        rust_analyzer = {},
+      }
 
-  -- TODO: :help which-key-setup
+      local on_attach = function(client, bufnr)
+        -- this code gets executed when a server is attached to a buffer
+      end
+
+      local mason_lspconfig = require('mason-lspconfig')
+      mason_lspconfig.setup {
+        ensure_installed = vim.tbl_keys(servers),
+      }
+
+      mason_lspconfig.setup_handlers {
+        function(server_name)
+          --- nvim-cmp supports additional completion capabilities
+          local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+          local capabilities = vim.tbl_deep_extend(
+            'force',
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            has_cmp and cmp_nvim_lsp.default_capabilities() or {}
+          )
+
+          require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+          }
+        end,
+      }
+    end,
+  },
+
+  {
+   'hrsh7th/nvim-cmp',
+    version = false, -- last release is way too old
+    event = 'InsertEnter',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+    },
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+
+      ---@diagnostic disable-next-line missing-fields
+      cmp.setup {
+        ---@diagnostic disable-next-line missing-fields
+        completion = {
+          completeopt = 'menu,menuone,noinsert', -- preselect
+        },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert {
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+        },
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'luasnip' },
+        }, {
+          { name = 'buffer', keyword_length = 5 },
+        },
+      }
+
+      luasnip.config.setup {}
+    end,
+  },
+
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -82,18 +179,19 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function () 
+    config = function ()
       local configs = require('nvim-treesitter.configs')
 
-      configs.setup({
+      ---@diagnostic disable-next-line missing-fields
+      configs.setup {
         ensure_installed = {
           'lua',
           'nix',
         },
         sync_install = false,
         highlight = { enable = true },
-        indent = { enable = true },  
-      })
+        indent = { enable = true },
+      }
     end,
   },
 
