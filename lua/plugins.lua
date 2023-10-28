@@ -12,13 +12,25 @@ return {
     },
   },
 
-  -- TODO: which-key
   -- TODO: LSP
   -- TODO: nvim-cmp
   -- TODO: telescope
   -- TODO: Git: gitsigns, neogit, vim-fugitive + vim-rhubarb?, or
   --       https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
   --       https://github.com/voldikss/vim-floaterm#lazygit
+
+  -- TODO: :help which-key-setup
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- :help which-key-config
+    }
+  },
 
   {
     'numToStr/Comment.nvim',
@@ -61,7 +73,7 @@ return {
     },
   },
 
-  { "nvim-tree/nvim-web-devicons", lazy = true }, -- loads upon requiring
+  { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
 
   {
     'nvim-treesitter/nvim-treesitter',
