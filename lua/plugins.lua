@@ -120,6 +120,26 @@ return {
     end,
   },
 
+  -- TODO: Add other treesitter plugins
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function ()
+      local configs = require('nvim-treesitter.configs')
+
+      ---@diagnostic disable-next-line missing-fields
+      configs.setup {
+        ensure_installed = {
+          'lua',
+          'nix',
+        },
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },
+      }
+    end,
+  },
+
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -175,25 +195,6 @@ return {
   },
 
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function ()
-      local configs = require('nvim-treesitter.configs')
-
-      ---@diagnostic disable-next-line missing-fields
-      configs.setup {
-        ensure_installed = {
-          'lua',
-          'nix',
-        },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-      }
-    end,
-  },
 
   'tpope/vim-sleuth', -- automatically adjusts 'shiftwidth' and 'expandtab'
 }
