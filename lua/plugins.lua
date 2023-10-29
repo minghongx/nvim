@@ -33,7 +33,12 @@ return {
       local servers = {
         lua_ls = {
           Lua = {
-            workspace = { checkThirdParty = false }
+            workspace = {
+              checkThirdParty = false,
+            },
+            completion = {
+              callSnippet = 'Replace',
+            },
           }
         },
         rust_analyzer = {},
@@ -124,7 +129,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function ()
+    config = function()
       local configs = require('nvim-treesitter.configs')
 
       ---@diagnostic disable-next-line missing-fields
@@ -167,7 +172,7 @@ return {
       -- :help leap-config
       highlight_unlabeled_phase_one_targets = true,
     },
-    config = function (_, opts)
+    config = function(_, opts)
       local leap = require('leap')
       for k, v in pairs(opts) do
         leap.opts[k] = v
