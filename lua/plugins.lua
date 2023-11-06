@@ -95,11 +95,6 @@ return {
         completion = {
           completeopt = 'menu,menuone,noinsert', -- preselect
         },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
         mapping = cmp.mapping.preset.insert {
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -112,6 +107,12 @@ return {
             select = true,
           },
         },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        -- :help cmp-config.sources
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
           { name = 'path' },
