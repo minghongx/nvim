@@ -75,7 +75,7 @@ return {
   },
 
   {
-   'hrsh7th/nvim-cmp',
+    'hrsh7th/nvim-cmp',
     version = false, -- last release is way too old
     event = 'InsertEnter',
     dependencies = {
@@ -180,11 +180,15 @@ return {
       end
 
       leap.add_default_mappings(true)
-      -- reddit.com/r/neovim/comments/130kz2x/leap_users_do_you_actually_use_xx/
+      -- https://reddit.com/r/neovim/comments/130kz2x/leap_users_do_you_actually_use_xx/
       vim.keymap.del({ 'x', 'o' }, 'x')
       vim.keymap.del({ 'x', 'o' }, 'X')
     end,
   },
+
+  'tpope/vim-sleuth', -- automatically adjusts 'shiftwidth' and 'expandtab'
+
+  { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
 
   {
     'nvim-lualine/lualine.nvim',
@@ -200,7 +204,49 @@ return {
     },
   },
 
-  { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    init = function()
+      vim.o.background = 'dark'
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+    opts = {
+      italic = {
+        comments = false,
+        strings = false,
+      },
+    },
+  },
 
-  'tpope/vim-sleuth', -- automatically adjusts 'shiftwidth' and 'expandtab'
+  -- {
+  --   'https://gitlab.com/HiPhish/resolarized.nvim',
+  --   priority = 1000,
+  --   init = function()
+  --     local resolarized = require('resolarized')
+  --     local scheme  = resolarized.scheme.selenized
+  --     scheme.hlgroups.Normal.bg = nil
+  --     vim.cmd.colorscheme 'selenized-dark'
+  --   end,
+  -- },
+
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   main = 'ibl',
+  --   config = function()
+  --     local highlight = {
+  --       'CursorColumn',
+  --       'Whitespace',
+  --     }
+  --
+  --     require('ibl').setup {
+  --       indent = { highlight = highlight, char = '' },
+  --       whitespace = {
+  --         highlight = highlight,
+  --         remove_blankline_trail = false,
+  --       },
+  --       scope = { enabled = false },
+  --     }
+  --   end,
+  -- },
 }
