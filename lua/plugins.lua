@@ -220,17 +220,6 @@ return {
   },
 
   -- {
-  --   'https://gitlab.com/HiPhish/resolarized.nvim',
-  --   priority = 1000,
-  --   init = function()
-  --     local resolarized = require('resolarized')
-  --     local scheme  = resolarized.scheme.selenized
-  --     scheme.hlgroups.Normal.bg = nil
-  --     vim.cmd.colorscheme 'selenized-dark'
-  --   end,
-  -- },
-
-  -- {
   --   'lukas-reineke/indent-blankline.nvim',
   --   main = 'ibl',
   --   config = function()
