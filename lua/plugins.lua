@@ -34,7 +34,7 @@ return {
         lua_ls = {
           Lua = {
             workspace = {
-              checkThirdParty = false,
+              checkThirdParty = 'Disable',
             },
             completion = {
               callSnippet = 'Replace',
