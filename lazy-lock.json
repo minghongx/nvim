@@ -14,9 +14,9 @@
   "neodev.nvim": { "branch": "main", "commit": "b90ec1b35dc67902bd3c4fbd80ab11993c1af8cc" },
   "nvim-cmp": { "branch": "main", "commit": "0b751f6beef40fd47375eaf53d3057e0bfa317e4" },
   "nvim-lspconfig": { "branch": "master", "commit": "b0852218bc5fa6514a71a9da6d5cfa63a263c83d" },
+  "nvim-tabline": { "branch": "main", "commit": "7044c5b73678c7b0161f4c37acd0f555cc3ce908" },
   "nvim-treesitter": { "branch": "master", "commit": "8996612bfbebe1657e1bb55a95201c96cab945c6" },
   "nvim-web-devicons": { "branch": "master", "commit": "47103b80c38c59f7a1b5408c232b92bf5d018651" },
-  "tabline.vim": { "branch": "master", "commit": "69c9698a3240860adaba93615f44778a9ab724b4" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }

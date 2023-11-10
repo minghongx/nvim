@@ -205,7 +205,13 @@ return {
     },
   },
 
-  'mkitt/tabline.vim',
+  {
+    'crispgm/nvim-tabline',
+    config = function()
+      require('tabline').setup({})
+      vim.o.showtabline = 1 -- hide when only one tab page is open
+    end,
+  },
 
   {
     'ellisonleao/gruvbox.nvim',
