@@ -190,6 +190,7 @@ return {
 
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
 
+  -- TODO: Improve
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -203,6 +204,8 @@ return {
       },
     },
   },
+
+  'mkitt/tabline.vim',
 
   {
     'ellisonleao/gruvbox.nvim',
