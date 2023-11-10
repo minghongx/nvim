@@ -204,12 +204,10 @@ return {
     },
   },
 
+  -- FIXME: Tab name of checkhealth buffer is empty
   {
     'crispgm/nvim-tabline',
-    config = function()
-      require('tabline').setup({})
-      vim.o.showtabline = 1 -- hide when only one tab page is open
-    end,
+    config = true,
   },
 
   {
