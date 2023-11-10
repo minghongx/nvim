@@ -205,6 +205,8 @@ return {
   },
 
   -- FIXME: Tab name of checkhealth buffer is empty
+  -- FIXME: Tab overflow
+  --        https://github.com/crispgm/nvim-tabline/issues/9
   {
     'crispgm/nvim-tabline',
     config = true,
