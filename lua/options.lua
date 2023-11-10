@@ -13,7 +13,7 @@ vim.o.smartcase = true
 -- Show relative line numbers and the actual number of the line with the cursor
 vim.wo.relativenumber = true; vim.wo.number = true
 
-vim.o.list = true; vim.o.lcs = 'eol:¬,tab:»·,precedes:❮,extends:❯'
+vim.o.list = true; vim.o.lcs = 'eol:¬,tab:»·,trail:·,precedes:◢,extends:◣'
 
 -- Enable break indent
 vim.o.breakindent = true
