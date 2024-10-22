@@ -24,10 +24,8 @@ return {
     'neovim/nvim-lspconfig',
     -- TODO: Lazy load
     dependencies = {
-      'mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
-      { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
       local servers = {
@@ -72,6 +70,17 @@ return {
         end,
       }
     end,
+  },
+
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
   },
 
   {
