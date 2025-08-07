@@ -5,7 +5,8 @@
 
 return {
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
+    version = "^1.0.0",
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
@@ -24,7 +25,7 @@ return {
     'neovim/nvim-lspconfig',
     -- TODO: Lazy load
     dependencies = {
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
@@ -39,7 +40,8 @@ return {
             },
           }
         },
-        rust_analyzer = {},
+        hls = {},
+        -- rust_analyzer = {},
       }
 
       local on_attach = function(client, bufnr)
@@ -147,6 +149,7 @@ return {
         ensure_installed = {
           'lua',
           'nix',
+          'haskell',
         },
         sync_install = false,
         highlight = { enable = true },
