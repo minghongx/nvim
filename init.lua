@@ -2,6 +2,11 @@ require('autocmds')
 require('keymaps')
 require('options')
 
+vim.lsp.enable {
+  'hls',
+  'nixd',
+}
+
 -- Bootstrap the Lazy plugin manager
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then

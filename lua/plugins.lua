@@ -4,139 +4,6 @@
 --       https://github.com/voldikss/vim-floaterm#lazygit
 
 return {
-  {
-    'mason-org/mason.nvim',
-    version = "^1.0.0",
-    cmd = 'Mason',
-    keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
-    build = ':MasonUpdate',
-    opts = {
-      ui = {
-        icons = {
-          package_installed = '✓',
-          package_pending = '➜',
-          package_uninstalled = '✗',
-        },
-      },
-    },
-  },
-
-  {
-    'neovim/nvim-lspconfig',
-    -- TODO: Lazy load
-    dependencies = {
-      { 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
-      'hrsh7th/cmp-nvim-lsp',
-    },
-    config = function()
-      local servers = {
-        lua_ls = {
-          Lua = {
-            workspace = {
-              checkThirdParty = 'Disable',
-            },
-            completion = {
-              callSnippet = 'Replace',
-            },
-          }
-        },
-        hls = {},
-        -- rust_analyzer = {},
-      }
-
-      local on_attach = function(client, bufnr)
-        -- this code gets executed when a server is attached to a buffer
-      end
-
-      local mason_lspconfig = require('mason-lspconfig')
-      mason_lspconfig.setup {
-        ensure_installed = vim.tbl_keys(servers),
-      }
-
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          --- nvim-cmp supports additional completion capabilities
-          local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-          local capabilities = vim.tbl_deep_extend(
-            'force',
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            has_cmp and cmp_nvim_lsp.default_capabilities() or {}
-          )
-
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-          }
-        end,
-      }
-    end,
-  },
-
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua', -- only load on lua files
-    opts = {
-      library = {
-        -- load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-
-  {
-    'hrsh7th/nvim-cmp',
-    version = false, -- last release is way too old
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-    },
-    config = function()
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-
-      ---@diagnostic disable-next-line missing-fields
-      cmp.setup {
-        ---@diagnostic disable-next-line missing-fields
-        completion = {
-          completeopt = 'menu,menuone,noinsert', -- preselect
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-        },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        -- :help cmp-config.sources
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'path' },
-          { name = 'luasnip' },
-        }, {
-          { name = 'buffer', keyword_length = 5 },
-        },
-      }
-
-      luasnip.config.setup {}
-    end,
-  },
-
   -- TODO: Add other treesitter plugins
   {
     'nvim-treesitter/nvim-treesitter',
@@ -144,12 +11,10 @@ return {
     config = function()
       local configs = require('nvim-treesitter.configs')
 
-      ---@diagnostic disable-next-line missing-fields
       configs.setup {
         ensure_installed = {
-          'lua',
-          'nix',
           'haskell',
+          'nix',
         },
         sync_install = false,
         highlight = { enable = true },
@@ -200,9 +65,6 @@ return {
 
   'tpope/vim-sleuth', -- automatically adjusts 'shiftwidth' and 'expandtab'
 
-  { 'nvim-tree/nvim-web-devicons', lazy = true }, -- loads upon requiring
-
-  -- TODO: Improve
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
@@ -214,14 +76,6 @@ return {
         section_separators = '',
       },
     },
-  },
-
-  -- FIXME: Tab name of checkhealth buffer is empty
-  -- FIXME: Tab overflow
-  --        https://github.com/crispgm/nvim-tabline/issues/9
-  {
-    'crispgm/nvim-tabline',
-    config = true,
   },
 
   {
