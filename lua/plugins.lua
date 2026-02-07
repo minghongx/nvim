@@ -45,10 +45,9 @@ return {
   },
 
   {
-    'ggandor/leap.nvim',
+    url = "https://codeberg.org/andyg/leap.nvim",
     opts = {
       -- :help leap-config
-      highlight_unlabeled_phase_one_targets = true,
     },
     config = function(_, opts)
       local leap = require('leap')
@@ -56,10 +55,8 @@ return {
         leap.opts[k] = v
       end
 
-      leap.add_default_mappings(true)
-      -- https://reddit.com/r/neovim/comments/130kz2x/leap_users_do_you_actually_use_xx/
-      vim.keymap.del({ 'x', 'o' }, 'x')
-      vim.keymap.del({ 'x', 'o' }, 'X')
+      vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+      vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
     end,
   },
 

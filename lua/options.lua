@@ -23,3 +23,6 @@ vim.wo.signcolumn = 'yes'
 
 -- NOTE: Make sure the terminal supports this
 vim.o.termguicolors = true
+
+-- TODO: Find better ways to display LSP diagnostics
+vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true }, })
